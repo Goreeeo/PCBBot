@@ -38,11 +38,19 @@ exports.AddTest = {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_dozen", interaction.locale));
                     return;
                 }
+                if (!link.toLowerCase().includes("score")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_dozen", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(localization_1.Localization.LocSystem.get("successful_dozen", interaction.locale));
                 await database_1.Database.DBSystem.addDozen(interaction.user.id, link);
                 break;
             case 1:
                 if (!link.toLowerCase().startsWith("https://sapplyvalues.github.io/results.html?") && !link.toLowerCase().startsWith("sapplyvalues.github.io/results.html?") && !link.toLowerCase().startsWith("https://sapplyvalues.github.io/feedback.html?") && !link.toLowerCase().startsWith("sapplyvalues.github.io/feedback.html?")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_sapply", interaction.locale));
+                    return;
+                }
+                if (!link.toLowerCase().includes("right") || !link.toLowerCase().includes("auth") || !link.toLowerCase().includes("prog")) {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_sapply", interaction.locale));
                     return;
                 }
@@ -54,11 +62,19 @@ exports.AddTest = {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_econ", interaction.locale));
                     return;
                 }
+                if (!link.toLowerCase().includes("equi") || !link.toLowerCase().includes("hori") || !link.toLowerCase().includes("dema") && !link.toLowerCase().includes("cent") && !link.toLowerCase().includes("auto") && !link.toLowerCase().includes("comm") && !link.toLowerCase().includes("birt") && !link.toLowerCase().includes("unio")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_econ", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(localization_1.Localization.LocSystem.get("successful_econ", interaction.locale));
                 await database_1.Database.DBSystem.addEcon(interaction.user.id, link);
                 break;
             case 3:
                 if (!link.toLowerCase().startsWith("https://8values.github.io/results.html?") && !link.toLowerCase().startsWith("8values.github.io/results.html?")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_eight", interaction.locale));
+                    return;
+                }
+                if (!link.toLowerCase().includes("e") || !link.toLowerCase().includes("d") || !link.toLowerCase().includes("g") && !link.toLowerCase().includes("s")) {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_eight", interaction.locale));
                     return;
                 }
@@ -70,11 +86,30 @@ exports.AddTest = {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_political_compass", interaction.locale));
                     return;
                 }
+                if (!link.toLowerCase().includes("ec") || !link.toLowerCase().includes("soc")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_political_compass", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(localization_1.Localization.LocSystem.get("successful_political_compass", interaction.locale));
                 await database_1.Database.DBSystem.addPC(interaction.user.id, link);
                 break;
             case 5:
                 if (!link.startsWith("http://leepicsevrer.de/tests/CulturalValues/results.html?") && !link.startsWith("leepicsevrer.de/tests/CulturalValues/results.html?")) {
+                    await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_cultural_values", interaction.locale));
+                    return;
+                }
+                if (!link.toLowerCase().includes("v1") ||
+                    !link.toLowerCase().includes("v3") ||
+                    !link.toLowerCase().includes("v5") ||
+                    !link.toLowerCase().includes("v7") ||
+                    !link.toLowerCase().includes("v9") ||
+                    !link.toLowerCase().includes("v11") ||
+                    !link.toLowerCase().includes("v13") ||
+                    !link.toLowerCase().includes("v15") ||
+                    !link.toLowerCase().includes("v17") ||
+                    !link.toLowerCase().includes("v19") ||
+                    !link.toLowerCase().includes("v21") ||
+                    !link.toLowerCase().includes("v23")) {
                     await interaction.followUp(localization_1.Localization.LocSystem.get("invalid_cultural_values", interaction.locale));
                     return;
                 }

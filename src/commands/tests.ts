@@ -26,7 +26,7 @@ export const DozenValues: Command = {
 
             if (dv != null) {
                 let tdv: number[] = dv as number[];
-                const dvEmbed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const dvEmbed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 dvEmbed.setTitle("**DozenValues**");
                 dvEmbed.addFields(
@@ -68,7 +68,7 @@ export const SapplyValues: Command = {
             const sv = TestParser.parseSapply(new URL(user.sapplyvalues as string));
 
             if (sv != null) {
-                const svEmbed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const svEmbed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 svEmbed.setTitle("**SapplyValues**");
                 svEmbed.addFields(
@@ -107,7 +107,7 @@ export const EconValues: Command = {
             const ev = TestParser.parseEcon(new URL(user.econvalues as string));
 
             if (ev != null) {
-                const embed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const embed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 embed.setTitle("**EconValues**");
                 embed.addFields(
@@ -151,7 +151,7 @@ export const EightValues: Command = {
             const ev = TestParser.parseEight(new URL(user.eightvalues as string));
 
             if (ev != null) {
-                const embed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const embed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 embed.setTitle("**8Values**");
                 embed.addFields(
@@ -191,7 +191,7 @@ export const CulturalValues: Command = {
             const cv = TestParser.parseCultural(new URL(user.culturalvalues as string));
 
             if (cv != null) {
-                const embed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const embed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 embed.setTitle("**CulturalValues**");
                 embed.addFields(
@@ -239,7 +239,7 @@ export const PoliticalCompass: Command = {
             const cv = TestParser.parseCompass(new URL(user.politicalcompass as string));
 
             if (cv != null) {
-                const embed = new EmbedBuilder().setAuthor({ name: member.nickname ?? interaction.user.username, iconURL: member.avatarURL() ?? interaction.user.avatarURL() });
+                const embed = new EmbedBuilder().setAuthor({ name: member?.nickname ?? interaction.user.username, iconURL: member?.avatarURL() ?? interaction.user.avatarURL() });
 
                 embed.setTitle("**Poltical Compass**");
                 embed.setImage(cv[0])

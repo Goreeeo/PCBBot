@@ -37,6 +37,10 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_dozen", interaction.locale));
                     return;
                 }
+                if (!link.toLowerCase().includes("score")) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_dozen", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_dozen", interaction.locale));
                 await Database.DBSystem.addDozen(interaction.user.id as String, link);
                 break;
@@ -45,7 +49,10 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_sapply", interaction.locale));
                     return;
                 }
-
+                if (!link.toLowerCase().includes("right") || !link.toLowerCase().includes("auth") || !link.toLowerCase().includes("prog")) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_sapply", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_sapply", interaction.locale));
                 await Database.DBSystem.addSapply(interaction.user.id as String, link);
                 break;
@@ -54,7 +61,10 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_econ", interaction.locale));
                     return;
                 }
-
+                if (!link.toLowerCase().includes("equi") || !link.toLowerCase().includes("hori") || !link.toLowerCase().includes("dema") && !link.toLowerCase().includes("cent") && !link.toLowerCase().includes("auto") && !link.toLowerCase().includes("comm") && !link.toLowerCase().includes("birt") && !link.toLowerCase().includes("unio")) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_econ", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_econ", interaction.locale));
                 await Database.DBSystem.addEcon(interaction.user.id as String, link);
                 break;
@@ -63,7 +73,10 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_eight", interaction.locale));
                     return;
                 }
-
+                if (!link.toLowerCase().includes("e") || !link.toLowerCase().includes("d") || !link.toLowerCase().includes("g") && !link.toLowerCase().includes("s")) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_eight", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_eight", interaction.locale));
                 await Database.DBSystem.addEight(interaction.user.id as String, link);
                 break;
@@ -72,7 +85,10 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_political_compass", interaction.locale));
                     return;
                 }
-
+                if (!link.toLowerCase().includes("ec") || !link.toLowerCase().includes("soc")) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_political_compass", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_political_compass", interaction.locale));
                 await Database.DBSystem.addPC(interaction.user.id as String, link);
                 break;
@@ -81,7 +97,23 @@ export const AddTest: Command = {
                     await interaction.followUp(Localization.LocSystem.get("invalid_cultural_values", interaction.locale));
                     return;
                 }
-
+                if (
+                    !link.toLowerCase().includes("v1") ||
+                    !link.toLowerCase().includes("v3") ||
+                    !link.toLowerCase().includes("v5") ||
+                    !link.toLowerCase().includes("v7") ||
+                    !link.toLowerCase().includes("v9") ||
+                    !link.toLowerCase().includes("v11") ||
+                    !link.toLowerCase().includes("v13") ||
+                    !link.toLowerCase().includes("v15") ||
+                    !link.toLowerCase().includes("v17") ||
+                    !link.toLowerCase().includes("v19") ||
+                    !link.toLowerCase().includes("v21") ||
+                    !link.toLowerCase().includes("v23")
+                ) {
+                    await interaction.followUp(Localization.LocSystem.get("invalid_cultural_values", interaction.locale));
+                    return;
+                }
                 await interaction.followUp(Localization.LocSystem.get("successful_cultural_values", interaction.locale));
                 await Database.DBSystem.addCultural(interaction.user.id as String, link);
                 break;
