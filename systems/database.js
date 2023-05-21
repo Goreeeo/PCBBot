@@ -23,6 +23,13 @@ var Database;
             });
         }
         static async getUserById(id) {
+            if (index_1.isTesting) {
+                return {
+                    _id: "532297642559012884",
+                    pronouns: "She/Her",
+                    ideology: "https://polcompballanarchy.miraheze.org/wiki/Hanoveran_Royal_Framework"
+                };
+            }
             let user = await userSchema_1.default.findById(id);
             if (!user) {
                 user = await this.createBlankUser(id);

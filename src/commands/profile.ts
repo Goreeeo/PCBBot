@@ -1,4 +1,4 @@
-import { Client, CommandInteraction, EmbedBuilder, Guild, GuildMember, SlashCommandUserOption, Snowflake, TextChannel, User } from "discord.js";
+import { Client, CommandInteraction, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
 import { COMMAND_TYPES, Command } from "./command";
 import { Localization } from "../systems/localization";
 import { Database } from "../systems/database";
@@ -19,6 +19,7 @@ export const Profile: Command = {
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
+        console.log(interaction.guild == null);
         if (interaction.guild == null) {
             await interaction.followUp(Localization.LocSystem.get("no_dm_support", interaction.locale));
             return;

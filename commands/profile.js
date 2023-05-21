@@ -21,6 +21,7 @@ exports.Profile = {
         }
     ],
     run: async (client, interaction) => {
+        console.log(interaction.guild == null);
         if (interaction.guild == null) {
             await interaction.followUp(localization_1.Localization.LocSystem.get("no_dm_support", interaction.locale));
             return;
