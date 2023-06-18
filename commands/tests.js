@@ -13,12 +13,12 @@ exports.DozenValues = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.dozenvalues != null) {
@@ -42,12 +42,12 @@ exports.SapplyValues = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.sapplyvalues != null) {
@@ -70,12 +70,12 @@ exports.EconValues = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.econvalues != null) {
@@ -98,12 +98,12 @@ exports.EightValues = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.eightvalues != null) {
@@ -126,12 +126,12 @@ exports.CulturalValues = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.culturalvalues != null) {
@@ -154,12 +154,12 @@ exports.PoliticalCompass = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: command_1.COMMAND_TYPES.USER
         }
     ],
     run: async (client, interaction) => {
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         const member = (await interaction.guild?.fetch())?.members.cache.get(userId);
         const user = await database_1.Database.DBSystem.getUserById(userId);
         if (user?.politicalcompass != null) {

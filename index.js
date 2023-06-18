@@ -10,8 +10,10 @@ const database_1 = require("./systems/database");
 dotenv.config();
 console.log("Bot is starting...");
 exports.isTesting = false;
+const intents = new discord_js_1.IntentsBitField();
+intents.add(discord_js_1.IntentsBitField.Flags.Guilds, discord_js_1.IntentsBitField.Flags.GuildMembers);
 const client = new discord_js_1.Client({
-    intents: []
+    intents
 });
 (0, ready_1.default)(client);
 (0, interactionCreate_1.default)(client);

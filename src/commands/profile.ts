@@ -15,17 +15,16 @@ export const Profile: Command = {
             name: "user",
             description: "The User to show the profile of",
             type: COMMAND_TYPES.USER,
-            required: true
+            required: false
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        console.log(interaction.guild == null);
         if (interaction.guild == null) {
             await interaction.followUp(Localization.LocSystem.get("no_dm_support", interaction.locale));
             return;
         }
 
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         let user: IUser = await Database.DBSystem.getUserById(userId);
         if (!user || !user.ideology) {
             await interaction.followUp(Localization.LocSystem.get("no_polcompball_associated", interaction.locale));

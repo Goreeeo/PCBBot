@@ -1202,5 +1202,57 @@
     "br-se": {
         "name": "Sergipe",
         "continent": "sa"
+    },
+    "ca-on": {
+        "name": "Ontario (CA)",
+        "continent": "na"
+    },
+    "ca-qc": {
+        "name": "Québec (CA)",
+        "continent": "na"
+    },
+    "ca-bc": {
+        "name": "British Columbia (CA)",
+        "continent": "na"
+    },
+    "ca-ab": {
+        "name": "Alberta (CA)",
+        "continent": "na"
+    },
+    "ca-nb": {
+        "name": "New Brunswick (CA)",
+        "continent": "na"
+    },
+    "ca-ns": {
+        "name": "Nova Scotia (CA)",
+        "continent": "na"
+    },
+    "ca-pe": {
+        "name": "Prince Edward Island (CA)",
+        "continent": "na"
+    },
+    "ca-mb": {
+        "name": "Manitoba (CA)",
+        "continent": "na"
+    },
+    "ca-sk": {
+        "name": "Saskatchewan (CA)",
+        "continent": "na"
+    },
+    "ca-yt": {
+        "name": "Yukon (CA)",
+        "continent": "na"
+    },
+    "ca-nt": {
+        "name": "Northwest Territories (CA)",
+        "continent": "na"
+    },
+    "ca-nu": {
+        "name": "Nunavut (CA)",
+        "continent": "na"
+    },
+    "ca-nl": {
+        "name": "Newfoundland and Labrador (CA)",
+        "continent": "na"
     }
 }

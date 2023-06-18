@@ -17,16 +17,15 @@ exports.Profile = {
             name: "user",
             description: "The User to show the profile of",
             type: command_1.COMMAND_TYPES.USER,
-            required: true
+            required: false
         }
     ],
     run: async (client, interaction) => {
-        console.log(interaction.guild == null);
         if (interaction.guild == null) {
             await interaction.followUp(localization_1.Localization.LocSystem.get("no_dm_support", interaction.locale));
             return;
         }
-        const userId = interaction.options.getUser("user", true).id;
+        const userId = (interaction.options.getUser("user", false) ?? interaction.user).id;
         let user = await database_1.Database.DBSystem.getUserById(userId);
         if (!user || !user.ideology) {
             await interaction.followUp(localization_1.Localization.LocSystem.get("no_polcompball_associated", interaction.locale));

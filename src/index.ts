@@ -8,11 +8,10 @@ dotenv.config();
 console.log("Bot is starting...");
 
 export let isTesting: boolean = false;
-
+const intents = new IntentsBitField();
+intents.add(IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMembers);
 const client = new Client({
-    intents: [
-
-    ]
+    intents
 });
 
 ready(client);

@@ -12,12 +12,12 @@ export const DozenValues: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
@@ -55,12 +55,12 @@ export const SapplyValues: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
@@ -94,12 +94,12 @@ export const EconValues: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
@@ -138,12 +138,12 @@ export const EightValues: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
@@ -178,12 +178,12 @@ export const CulturalValues: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
@@ -226,12 +226,12 @@ export const PoliticalCompass: Command = {
         {
             name: "user",
             description: "The User",
-            required: true,
+            required: false,
             type: COMMAND_TYPES.USER
         }
     ],
     run: async (client: Client, interaction: CommandInteraction) => {
-        const userId: String = interaction.options.getUser("user", true).id as String;
+        const userId: String = (interaction.options.getUser("user", false) ?? interaction.user).id as String;
         const member: GuildMember = (await interaction.guild?.fetch())?.members.cache.get(userId) as GuildMember;
         const user: IUser = await Database.DBSystem.getUserById(userId);
 
