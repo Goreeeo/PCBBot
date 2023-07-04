@@ -79,6 +79,7 @@ exports.Profile = {
             const country = countries_1.CountryManager.Countries.get(user.region).name;
             embed.addFields({ name: "Region", value: `${country}` });
         }
+        ;
         await interaction.followUp({ embeds: [embed] });
     },
 };

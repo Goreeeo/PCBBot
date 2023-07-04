@@ -1,11 +1,9 @@
 import mongoose, { mongo } from "mongoose";
 import userSchema, { IUser } from "../schema/userSchema";
-import { isTesting } from "../index";
 
 export module Database {
     export class DBSystem {
         static async init(): Promise<void> {
-            if (isTesting) return;
             await mongoose.connect(
                 process.env.MONGO_CONNECTION as string,
                 {
@@ -26,13 +24,6 @@ export module Database {
         }
 
         static async getUserById(id: String): Promise<any> {
-            if (isTesting) {
-                return {
-                    _id: "532297642559012884",
-                    pronouns: "She/Her",
-                    ideology: "https://polcompballanarchy.miraheze.org/wiki/Hanoveran_Royal_Framework"
-                }
-            }
             let user: any = await userSchema.findById(id);
             if (!user) {
                 user = await this.createBlankUser(id);
@@ -40,14 +31,19 @@ export module Database {
             return user;
         }
 
+        static async clear(id: String): Promise<void> {
+            await userSchema.findOneAndDelete({
+                _id: id
+            });
+        }
+
         static async addDozen(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                dozenvalues: link
+                dozenvalues: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -55,13 +51,12 @@ export module Database {
         }
 
         static async addSapply(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                sapplyvalues: link
+                sapplyvalues: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -69,13 +64,12 @@ export module Database {
         }
 
         static async addEcon(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                econvalues: link
+                econvalues: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -83,13 +77,12 @@ export module Database {
         }
 
         static async addEight(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                eightvalues: link
+                eightvalues: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -97,13 +90,12 @@ export module Database {
         }
 
         static async addPC(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                politicalcompass: link
+                politicalcompass: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -111,13 +103,12 @@ export module Database {
         }
 
         static async addCultural(id: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
             {
                 _id: id,
-                culturalvalues: link
+                culturalvalues: (link == "" ? null : link)
             },
             {
                 upsert: true
@@ -125,7 +116,6 @@ export module Database {
         }
 
         static async setIdeology(id: String, thumb: String, name: String, caption: String, link: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             },
@@ -142,7 +132,6 @@ export module Database {
         }
 
         static async setRegion(id: String, region: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             }, {
@@ -154,7 +143,6 @@ export module Database {
         }
 
         static async setPronouns(id: String, pronouns: String): Promise<void> {
-            if (isTesting) return;
             await userSchema.findOneAndUpdate({
                 _id: id
             }, {

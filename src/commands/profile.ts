@@ -1,4 +1,4 @@
-import { Client, CommandInteraction, EmbedBuilder, Guild, GuildMember, User } from "discord.js";
+import { ActionRowBuilder, BaseInteraction, ButtonBuilder, Client, CommandInteraction, EmbedBuilder, Guild, GuildMember, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, User } from "discord.js";
 import { COMMAND_TYPES, Command } from "./command";
 import { Localization } from "../systems/localization";
 import { Database } from "../systems/database";
@@ -96,7 +96,7 @@ export const Profile: Command = {
         if (user.region != null) {
             const country = CountryManager.Countries.get(user.region as string).name;
             embed.addFields({ name: "Region", value: `${country}` })
-        }
+        };
 
         await interaction.followUp({embeds: [embed]});
     },

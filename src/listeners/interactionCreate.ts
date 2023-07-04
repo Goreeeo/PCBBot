@@ -10,13 +10,14 @@ export default (client: Client): void => {
 };
 
 const handleSlashCommand = async (client: Client, interaction: CommandInteraction): Promise<void> => {
+    await interaction.deferReply();
+
     const slashCommand = Commands.find(c => c.name == interaction.commandName);
     if (!slashCommand) {
         return;
     }
     
     try {
-        await interaction.deferReply();
         await slashCommand.run(client, interaction);
     }
     catch (e) {

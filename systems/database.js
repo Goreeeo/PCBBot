@@ -4,13 +4,10 @@ exports.Database = void 0;
 const tslib_1 = require("tslib");
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const userSchema_1 = tslib_1.__importDefault(require("../schema/userSchema"));
-const index_1 = require("../index");
 var Database;
 (function (Database) {
     class DBSystem {
         static async init() {
-            if (index_1.isTesting)
-                return;
             await mongoose_1.default.connect(process.env.MONGO_CONNECTION, {});
         }
         static async createBlankUser(id) {
@@ -23,94 +20,78 @@ var Database;
             });
         }
         static async getUserById(id) {
-            if (index_1.isTesting) {
-                return {
-                    _id: "532297642559012884",
-                    pronouns: "She/Her",
-                    ideology: "https://polcompballanarchy.miraheze.org/wiki/Hanoveran_Royal_Framework"
-                };
-            }
             let user = await userSchema_1.default.findById(id);
             if (!user) {
                 user = await this.createBlankUser(id);
             }
             return user;
         }
+        static async clear(id) {
+            await userSchema_1.default.findOneAndDelete({
+                _id: id
+            });
+        }
         static async addDozen(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                dozenvalues: link
+                dozenvalues: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async addSapply(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                sapplyvalues: link
+                sapplyvalues: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async addEcon(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                econvalues: link
+                econvalues: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async addEight(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                eightvalues: link
+                eightvalues: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async addPC(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                politicalcompass: link
+                politicalcompass: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async addCultural(id, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
                 _id: id,
-                culturalvalues: link
+                culturalvalues: (link == "" ? null : link)
             }, {
                 upsert: true
             });
         }
         static async setIdeology(id, thumb, name, caption, link) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
@@ -124,8 +105,6 @@ var Database;
             });
         }
         static async setRegion(id, region) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
@@ -136,8 +115,6 @@ var Database;
             });
         }
         static async setPronouns(id, pronouns) {
-            if (index_1.isTesting)
-                return;
             await userSchema_1.default.findOneAndUpdate({
                 _id: id
             }, {
